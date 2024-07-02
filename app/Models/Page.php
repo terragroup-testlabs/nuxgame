@@ -20,9 +20,17 @@ class Page extends Model
     protected static function boot()
     {
         parent::boot();
+
         static::creating(function ($model) {
             $model->setSlug();
         });
+
+        static::updating(function ($model) {
+            if (strlen($model->slug) != 42) {
+                throw new \RuntimeException('Page slug must be exacly 42 characters long');
+            }
+        });
+
     }
 
     public function games()

@@ -1,3 +1,14 @@
+## Deploy
+- Clone project
+- Copy env.example to .env, fill WEATHER_API_KEY and WEATHER_CITY
+- run `docker-compose up`
+- run `composer install` and `php artisan migrate` in project-php container
+## Notes
+- Page slug is automatically set when created 
+- I leave `home` route as closure, but it is not good practice
+- Game service can be rolled only once, to prevent occasional overwriting game result.
+- We can store only game number and calculate score in runtime to save db size, but if score logic is changed - all user total score became incorrect. 
+
 ## Task
 
 1) На главной странице необходимо вывести форму регистрации с такими полями: Username,
